@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-card {
+  margin: 10px;
+  cursor: pointer;
+}
+
+h1 {
+  margin: 20px;
+}
+
+.mi-hint {
+  margin: 10px;
+}
+
+.mc-text {
+  color: grey;
+}
+
+.full-width {
+  width: 100%;
+}

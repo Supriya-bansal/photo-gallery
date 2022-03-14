@@ -1,0 +1,15 @@
+.fx-parent {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.fx-child {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selected {
+  font-weight: bold;
+}

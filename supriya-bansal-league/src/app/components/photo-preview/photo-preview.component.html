@@ -1,0 +1,22 @@
+<mat-card>
+  <div class="container">
+    <img *ngIf="photoObj" [src]="photoObj.url" />
+    <mat-icon class="mi-resize" (click)="openImageinPopup()"
+      >fullscreen</mat-icon
+    >
+  </div>
+  <p
+    *ngIf="photoObj"
+    class="preview-title"
+    [innerHTML]="photoObj.title | italicize: searchText"
+  ></p>
+</mat-card>
+
+<ng-template #photoModal>
+  <mat-dialog-content *ngIf="photoObj" fxLayout="column">
+    <img [src]="photoObj.url" />
+    <mat-card>
+      <pre class="mc-text">{{ photoObj | json }}</pre>
+    </mat-card>
+  </mat-dialog-content>
+</ng-template>

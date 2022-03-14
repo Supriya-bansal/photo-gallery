@@ -1,0 +1,48 @@
+<div class="fx-parent">
+  <div class="full-width">
+    <app-search
+      id="fi-album"
+      [placeholder]="'Search Albums'"
+      [data]="albums"
+      [filterProp]="['title']"
+      (filteredData)="filterAlbums($event)"
+      (searchText)="setSearchText($event, 'fi-album')"
+    ></app-search>
+  </div>
+  <div class="fx-child">
+    <mat-card *ngFor="let album of filteredAlbums" (click)="getPhotos(album)">
+      <p
+        [class]="selectedAlbumId === album.id ? 'selected' : ''"
+        [innerHTML]="album.title | italicize: searchTextAlbum"
+      ></p>
+    </mat-card>
+    <app-validation-message
+      propertyCheck="length"
+      message="No albums found for search criteria."
+      [data]="filteredAlbums"
+    ></app-validation-message>
+  </div>
+  <div class="fx-child">
+    <div class="full-width">
+      <app-search
+        id="fi-photo"
+        [data]="getSelectedAlbumPhotos()"
+        [placeholder]="'Title/ Thumbnail'"
+        [filterProp]="['title', 'thumbnailUrl']"
+        (filteredData)="filterPhotos($event)"
+        (searchText)="setSearchText($event, 'fi-photo')"
+      ></app-search>
+    </div>
+    <app-photo-preview
+      *ngFor="let photo of filteredPhotos"
+      [photoObj]="photo"
+      [searchText]="searchTextPhoto"
+    >
+    </app-photo-preview>
+    <app-validation-message
+      propertyCheck="length"
+      [message]="validationMessage"
+      [data]="filteredPhotos"
+    ></app-validation-message>
+  </div>
+</div>

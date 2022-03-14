@@ -1,0 +1,13 @@
+<div class="search-box">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input
+        id="mf-search"
+        matInput
+        formControlName="searchText"
+        (ngModelChange)="filter()"
+        [placeholder]="placeholder"
+      />
+    </mat-form-field>
+  </form>
+</div>

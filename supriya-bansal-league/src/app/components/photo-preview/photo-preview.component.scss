@@ -1,0 +1,17 @@
+.preview-title {
+  width: 100px;
+}
+
+.container {
+  position: relative;
+}
+.container img {
+  display: block;
+  height: 100px;
+  width: 100px;
+}
+.container .mi-resize {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+}
