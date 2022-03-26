@@ -1,18 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatMenuModule } from '@angular/material/menu';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { MatIconModule } from "@angular/material/icon";
+import { MatMenuModule } from "@angular/material/menu";
+import { MockModule } from "ng-mocks";
+import { SettingsComponent } from "./settings.component";
 
-import { SettingsComponent } from './settings.component';
-
-describe('SettingsComponent', () => {
+describe("SettingsComponent", () => {
   let component: SettingsComponent;
   let fixture: ComponentFixture<SettingsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [SettingsComponent],
-      imports: [MatMenuModule],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SettingsComponent],
+        imports: [MockModule(MatMenuModule), MockModule(MatIconModule)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SettingsComponent);
@@ -20,7 +23,7 @@ describe('SettingsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

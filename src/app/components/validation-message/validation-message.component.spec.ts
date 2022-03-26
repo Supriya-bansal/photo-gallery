@@ -1,16 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MockModule } from "ng-mocks";
+import { ValidationMessageComponent } from "./validation-message.component";
 
-import { ValidationMessageComponent } from './validation-message.component';
-
-describe('ValidationMessageComponent', () => {
+describe("ValidationMessageComponent", () => {
   let component: ValidationMessageComponent;
   let fixture: ComponentFixture<ValidationMessageComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ValidationMessageComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ValidationMessageComponent],
+        imports: [MockModule(MatFormFieldModule)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ValidationMessageComponent);
@@ -18,33 +22,33 @@ describe('ValidationMessageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should not have hint element with message propertyCheck is not provided.', () => {
-    component.data = ['D1', 'D2'];
+  it("should not have hint element with message propertyCheck is not provided.", () => {
+    component.data = ["D1", "D2"];
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.mi-hint')).toBeFalsy();
+    expect(compiled.querySelector(".mi-hint")).toBeFalsy();
   });
 
-  it('should not have hint element with message if data is non-empty.', () => {
-    component.data = ['D1', 'D2'];
-    component.propertyCheck = 'length';
+  it("should not have hint element with message if data is non-empty.", () => {
+    component.data = ["D1", "D2"];
+    component.propertyCheck = "length";
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.mi-hint')).toBe(null);
+    expect(compiled.querySelector(".mi-hint")).toBe(null);
   });
 
-  it('should create hint element with message if data is empty.', () => {
+  it("should create hint element with message if data is empty.", () => {
     component.data = [];
-    component.message = 'Data unavailable';
-    component.propertyCheck = 'length';
+    component.message = "Data unavailable";
+    component.propertyCheck = "length";
 
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.mi-hint').textContent).toBe(
+    expect(compiled.querySelector(".mi-hint").textContent).toBe(
       component.message
     );
   });

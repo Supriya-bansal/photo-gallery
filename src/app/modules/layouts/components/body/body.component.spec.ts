@@ -1,16 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { MockComponent } from "ng-mocks";
+import { AlbumComponent } from "src/app/components/album/album.component";
+import { BodyComponent } from "./body.component";
 
-import { BodyComponent } from './body.component';
-
-describe('BodyComponent', () => {
+describe("BodyComponent", () => {
   let component: BodyComponent;
   let fixture: ComponentFixture<BodyComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [BodyComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [BodyComponent, MockComponent(AlbumComponent)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BodyComponent);
@@ -18,7 +21,7 @@ describe('BodyComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

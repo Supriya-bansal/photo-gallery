@@ -1,16 +1,19 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { MockComponent } from "ng-mocks";
+import { SettingsComponent } from "src/app/modules/shared/components/settings/settings.component";
 import { HeaderComponent } from "./header.component";
 
 describe("HeaderComponent", () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [HeaderComponent, MockComponent(SettingsComponent)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);

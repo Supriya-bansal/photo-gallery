@@ -3,6 +3,7 @@ import {
   HttpTestingController,
 } from "@angular/common/http/testing";
 import { fakeAsync, TestBed, tick } from "@angular/core/testing";
+import { AlbumComponent } from "../components/album/album.component";
 import { IAlbum } from "../interfaces/Album";
 import { IPhoto } from "../interfaces/Photo";
 import { AlbumService } from "./album.service";
@@ -13,6 +14,7 @@ describe("AlbumService", () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
+      declarations: [AlbumComponent],
       providers: [AlbumService],
       imports: [HttpClientTestingModule],
     });
