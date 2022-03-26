@@ -1,0 +1,15 @@
+.header {
+  color: white;
+  display: flex;
+  flex-direction: row;
+
+  h1 {
+    flex: 1;
+    align-items: flex-start;
+  }
+
+  app-settings {
+    margin: 20px;
+    align-items: flex-end;
+  }
+}
