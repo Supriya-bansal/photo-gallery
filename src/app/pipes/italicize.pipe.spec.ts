@@ -1,21 +1,19 @@
-import { style } from '@angular/animations';
-import { TestBed } from '@angular/core/testing';
-import { ItalicizePipe } from './italicize.pipe';
+import { ItalicizePipe } from "./italicize.pipe";
 
-describe('ItalicizePipe', () => {
+describe("ItalicizePipe", () => {
   let pipe: ItalicizePipe;
 
   beforeEach(() => {
     pipe = new ItalicizePipe();
   });
 
-  it('create an instance', () => {
+  it("create an instance", () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('should transform part of string value to italic style', () => {
+  it("should transform part of string value to italic style", () => {
     expect(
-      pipe.transform('This is test subject for testing unit tests', 'test')
-    ).toBe('This is <i>test</i> subject for <i>testing</i> unit <i>tests</i>');
+      pipe.transform("This is test subject for testing unit tests", "test")
+    ).toBe("This is <i>test</i> subject for <i>testing</i> unit <i>tests</i>");
   });
 });

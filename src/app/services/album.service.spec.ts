@@ -15,7 +15,6 @@ describe("AlbumService", () => {
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AlbumComponent],
-      providers: [AlbumService],
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(AlbumService);
@@ -34,9 +33,8 @@ describe("AlbumService", () => {
     ];
     tick();
     service.getAlbums().subscribe((albums) => {
-      expect(albums)
-        .withContext("expected albums")
-        .toEqual(mockAlbums ? mockAlbums : []);
+      expect(albums).withContext("expected albums").toEqual(mockAlbums);
+      expect(albums).withContext("expected albums").toEqual(mockAlbums);
     });
 
     const req = httpTestingController.expectOne(
@@ -50,7 +48,7 @@ describe("AlbumService", () => {
     const mockAlbums: IAlbum[] = [];
     tick();
     service.getAlbums().subscribe((albums) => {
-      expect(albums.length).withContext("expected albums").toBe(0);
+      expect(albums).withContext("expected albums").toEqual([]);
     });
 
     const req = httpTestingController.expectOne(
