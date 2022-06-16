@@ -1,29 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { SettingsComponent } from './components/settings/settings.component';
-import { MatMenuModule } from '@angular/material/menu';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MaterialModule } from "../material/material.module";
+import { SettingsComponent } from "./components/settings/settings.component";
 
-const modules = [
-  FormsModule,
-  ReactiveFormsModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatIconModule,
-  MatDialogModule,
-  MatCardModule,
-  CommonModule,
-  MatMenuModule,
-];
+const modules = [FormsModule, ReactiveFormsModule, CommonModule];
 
 @NgModule({
   declarations: [SettingsComponent],
-  imports: [...modules],
-  exports: [...modules, SettingsComponent],
+  imports: [...modules, MaterialModule],
+  exports: [...modules, MaterialModule, SettingsComponent],
 })
 export class SharedModule {}

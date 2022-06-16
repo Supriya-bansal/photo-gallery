@@ -15,7 +15,6 @@ describe("AlbumService", () => {
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AlbumComponent],
-      providers: [AlbumService],
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(AlbumService);
@@ -26,16 +25,30 @@ describe("AlbumService", () => {
     expect(service).toBeTruthy();
   });
 
-  it("getAlbums() should return expected albums", fakeAsync(() => {
+  it("If albums exist : getAlbums() should return expected albums", fakeAsync(() => {
     const mockAlbums: IAlbum[] = [
       { id: 1, userId: 1, title: "text1" },
       { id: 2, userId: 1, title: "text2" },
       { id: 2, userId: 1, title: "Album3" },
     ];
-
     tick();
     service.getAlbums().subscribe((albums) => {
       expect(albums).withContext("expected albums").toEqual(mockAlbums);
+      expect(albums).withContext("expected albums").toEqual(mockAlbums);
+    });
+
+    const req = httpTestingController.expectOne(
+      "https://jsonplaceholder.typicode.com/users/1/albums"
+    );
+
+    req.flush(mockAlbums);
+  }));
+
+  it("If albums do not exist (means empty): getAlbums() should return expected albums", fakeAsync(() => {
+    const mockAlbums: IAlbum[] = [];
+    tick();
+    service.getAlbums().subscribe((albums) => {
+      expect(albums).withContext("expected albums").toEqual([]);
     });
 
     const req = httpTestingController.expectOne(
